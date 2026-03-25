@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Psychologist } from '~/types/psychologist';
+import type { Psychologist } from '~/types/psychologist'
+import PsychologistCard from './components/PsychologistCard.vue'
 
 defineProps<{
-  psychologists: Psychologist[];
-}>();
+  psychologists: Psychologist[]
+}>()
 </script>
-
 
 <template>
   <div class="grid">
@@ -17,15 +17,14 @@ defineProps<{
   </div>
 </template>
 
-
 <style scoped>
 .grid {
+  background-color: #EEEEF1;
   max-width: 1820px;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 10px 50px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
-  margin-bottom: 60px;
 }
 </style>

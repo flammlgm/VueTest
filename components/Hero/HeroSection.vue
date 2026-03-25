@@ -92,7 +92,7 @@ onMounted(() => {
 
 .hero__title {
   position: absolute;
-  font-family: 'Riviera', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 115px;
   line-height: 1;
@@ -119,7 +119,7 @@ onMounted(() => {
 }
 
 .hero__title--bottom {
-  color: #B0CBE6;
+  color: #FFFFFF;
   left: 50%;
   bottom: calc(50% - 295px);
   text-align: left;

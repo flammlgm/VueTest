@@ -1,16 +1,6 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue';
 import type { Psychologist } from '~/types/psychologist';
-import { psychologists } from '@/data/psychologists';
 
-import AppHeader from '@/components/Header/AppHeader.vue';
-import HeroSection from '@/components/Hero/HeroSection.vue';
-import FiltersPanel from '@/components/Filters/FiltersPanel.vue';
-import PsychologistsGrid from '@/components/Card/PsychologistsGrid.vue';
-import Pagination from '@/components/Pagination/Pagination.vue';
-import AppFooter from '@/components/Footer/AppFooter.vue';
-
-const allPsychologists: Psychologist[] = [
+export const psychologists: Psychologist[] = [
   {
     id: 1,
     name: 'Соколова Александра Владимировна',
@@ -124,45 +114,3 @@ const allPsychologists: Psychologist[] = [
     imageUrl: 'https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/16/73/37/05/34/deab65d40cd7.jpg',
   },
 ];
-
-const itemsPerPage = 8;
-const currentPage = ref(1);
-
-const totalPages = computed(() => Math.ceil(psychologists.length / itemsPerPage));
-
-const paginatedPsychologists = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return psychologists.slice(start, end);
-});
-
-const gridRef = ref(null)
-
-const handlePageChange = (page: number) => {
-  currentPage.value = page
-  gridRef.value?.$el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-</script>
-
-<template>
-  <div class="catalog-page">
-    <AppHeader />
-    <HeroSection />
-    <FiltersPanel />
-    <PsychologistsGrid ref="gridRef" :psychologists="paginatedPsychologists" />
-    <Pagination
-      :current-page="currentPage"
-      :total-pages="totalPages"
-      @page-change="handlePageChange"
-    />
-    <AppFooter /> 
-  </div>
-</template>
-
-<style scoped>
-.catalog-page {
-  max-width: 1920px;
-  margin: 0 auto;
-  position: relative;
-}
-</style>

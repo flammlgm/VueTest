@@ -47,7 +47,12 @@ const changePage = (page: number) => {
       </svg>
     </button>
     <div class="pagination__numbers">
-      <button v-for="page in visiblePages" :key="page" :class="{ active: page === currentPage }" @click="changePage(page)">
+      <button
+        v-for="page in visiblePages"
+        :key="page"
+        :class="{ active: page === currentPage }"
+        @click="changePage(page)"
+      >
         {{ page }}
       </button>
       <span v-if="showEllipsis">...</span>
@@ -67,18 +72,21 @@ const changePage = (page: number) => {
   justify-content: center;
   align-items: center;
   gap: 30px;
-  margin: 60px 0;
+  margin: 0;
+  padding: 40px 0 60px;
+  background-color: #EEEEF1;
 }
 .pagination__arrow {
   width: 40px;
   height: 40px;
   background: #FFFFFF;
-  border-radius: 20px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: background 0.2s;
+  border: none;
 }
 .pagination__arrow:hover:not(:disabled) {
   background: #F0F0F0;
@@ -89,27 +97,34 @@ const changePage = (page: number) => {
 }
 .pagination__numbers {
   display: flex;
+  align-items: center;
   gap: 10px;
   background: #FFFFFF;
   border-radius: 10px;
-  padding: 5px 30px;
+  padding: 5px 10px;
 }
 .pagination__numbers button {
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background: none;
+  border: none;
   font-size: 18px;
   font-weight: 300;
   color: #0B1B3A;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  border-radius: 5px;
 }
 .pagination__numbers button.active {
   background: #0B1B3A;
   color: #FFFFFF;
-  border-radius: 5px;
 }
 .pagination__numbers button:hover:not(.active) {
   color: #6598D9;
+}
+.pagination__numbers span {
+  font-size: 18px;
+  font-weight: 300;
+  color: #0B1B3A;
 }
 </style>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Psychologist } from '~/types/psychologist';
+import type { Psychologist } from '~/types/psychologist'
 
 defineProps<{
-  psychologist: Psychologist;
-}>();
+  psychologist: Psychologist
+}>()
 </script>
 
 <template>
@@ -16,7 +16,7 @@ defineProps<{
       <p class="card__description">{{ psychologist.description }}</p>
       <div class="card__footer">
         <div class="card__price">{{ psychologist.price }} руб.</div>
-        <button class="card__button">Бесплатная консультация</button>
+        <button class="card__button">Записаться</button>
       </div>
     </div>
   </div>
@@ -24,18 +24,21 @@ defineProps<{
 
 <style scoped>
 .card {
-  width: 440px;
+  width: 100%;
   background: #FFFFFF;
   border-radius: 20px;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 .card__image {
-  height: 400px;
+  aspect-ratio: 440 / 400;
   background-color: #E5E5E5;
 }
 .card__image img {
@@ -44,53 +47,63 @@ defineProps<{
   object-fit: cover;
 }
 .card__content {
-  padding: 0 10px 10px 10px;
+  padding: 20px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .card__name {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
   font-size: 22px;
-  line-height: 100%;
+  line-height: 1.2;
   letter-spacing: 0.02em;
   color: #0B1B3A;
-  margin: 20px 0 5px;
+  margin-bottom: 8px;
 }
 .card__description {
   font-weight: 300;
-  font-size: 18px;
-  line-height: 100%;
+  font-size: 16px;
+  line-height: 1.3;
   letter-spacing: 0.02em;
   color: #0B1B3A;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex: 1;
 }
 .card__footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  margin-top: auto;
 }
 .card__price {
-  font-family: 'Riviera', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 40px;
-  line-height: 100%;
+  font-size: 24px;
+  line-height: 1;
   letter-spacing: -0.03em;
   color: #6598D9;
+  white-space: nowrap;
 }
 .card__button {
   background: rgba(11, 27, 58, 0.07);
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 8px 16px;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 100%;
+  font-size: 14px;
+  line-height: 1;
   letter-spacing: -0.03em;
   color: #0B1B3A;
   cursor: pointer;
   transition: background 0.2s;
+  border: none;
+  flex: 1;              
+  text-align: center;
 }
 .card__button:hover {
   background: rgba(11, 27, 58, 0.15);
